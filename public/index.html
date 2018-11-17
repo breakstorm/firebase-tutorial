@@ -1,65 +1,206 @@
+
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/5.5.8/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/5.5.8/firebase-auth.js"></script>
-    <script defer src="/__/firebase/5.5.8/firebase-database.js"></script>
-    <script defer src="/__/firebase/5.5.8/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/5.5.8/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
+  <title>안녕~ 불판!</title>
+  <!-- materialize.css 포함 -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+  <style media="screen">
+    body{ background: #eee; }
+    #MY_NAME{ font-size: 1.5em; font-weight: bold; }
+    #CONTENTS{ min-height: 700px; margin-top: 20px; }
+    .input-field input[type=text]:focus {
+       border-bottom: 1px solid #3f51b5 !important;
+       box-shadow: 0 1px 0 0 #3f51b5 !important;
+    }
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+  </style>
+</head>
+
+<body>
+  <!-- 네비게이션 영역 -->
+  <nav class="indigo">
+    <div class="nav-wrapper container">
+      <a href="/" class="brand-logo">Hello Firebase</a>
+      <!-- 데스크톱 모드에서 보이는 메인메뉴 -->
+      <ul class="right hide-on-med-and-down">
+        <li><a href="hosting.html"><i class="material-icons">language</i></a></li>
+        <li><a href="auth.html"><i class="material-icons">supervisor_account</i></a></li>
+        <li><a href="database.html"><i class="material-icons">dns</i></a></li>
+        <li><a href="storage.html"><i class="material-icons">perm_media</i></a></li>
+        <li><a class="dropdown-button" data-activates="dropdown1"><i class="material-icons">more_vert</i></a></li>
+      </ul>
+        <!-- 드롭다운 메뉴 -->
+        <ul id="dropdown1" class="dropdown-content">
+          <li><a class="black-text"><strong>더 보기</strong></a></li>
+          <li class="divider"></li>
+          <li><a href="https://www.facebook.com/groups/aboutCoding/" target="_blank" class="indigo-text">ABCD</a></li>
+          <li><a href="http://sbsoft.kr/" target="_blank" class="indigo-text">MadeBy</a></li>
+          <li class="divider"></li>
+          <li><a href="#" class="BTN_NETWORKING">참가자</a></li>
+        </ul>
+      <!-- 모바일에서 보이는 메인 메뉴 -->
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="hosting.html">Hosting</a></li>
+        <li><a href="auth.html">Auth</a></li>
+        <li><a href="database.html">Database</a></li>
+        <li><a href="storage.html">Storage</a></li>
+        <li class="divider"></li>
+        <li><a href="https://m.facebook.com/groups/aboutCoding/" target="_blank">ABCD</a></li>
+        <li><a href="http://sbsoft.kr/" target="_blank">MadeBy</a></li>
+        <li class="divider"></li>
+        <li><a href="#" class="BTN_NETWORKING">참가자</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+
+
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+  </nav>
+  <!-- 내용영역 -->
+  <div class="container" id="CONTENTS">
+    <!-- 파이어베이스 -->
+    <ul class="collection white z-depth-1">
+      <li class="collection-item avatar">
+        <i class="material-icons circle indigo">whatshot</i>
+        <span class="title"><b>Firebase for Web</b></span>
+        <p>앱 개발 및 출시 후 관리를 위한 플랫폼인 Firebase! <br>
+          웹 개발도 활용할 수 있는 DB, 호스팅, 스토리지, 인증을 하나하나씩 실습하여 알아봅니다</p>
+      </li>
+    </ul>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+    <!-- 프로필 -->
+    <div class="row card-panel">
+      <div class="col s12 m3 l3">
+        <img src="/images/profile.png" alt="프로필 사진" class="responsive-img">
+      </div>
+      <div class="col s12 m9 l9">
+        <h5>이름 :
+          <span id="MY_NAME"><!-- TODO 이름수정 -->장승빈</span></h5>
+        <hr>
+        <div class="row">
+          <div class="col s12 m6 l6">
+            <h5>직업 :</h5>
+            <p id="MY_JOB"><!-- TODO 직업수정 -->개발자</p>
+          </div>
+          <div class="col s12 m6 l6">
+            <h5>회사 :</h5>
+            <p><!-- TODO 회사수정 -->승빈이네 공작소</p>
+          </div>
+          <div class="col s12 m12 l12">
+            <h5>My Skills</h5>
+            <p><!-- TODO 스킬수정 -->iOS(swift), Android(JAVA), REST API, WebServer</p>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="col s12 m12 l12">
+        <h5>하고 싶은 말 <small>(or 도움받고 싶은 부분)</small></h5>
+        <p><!-- TODO 하고 싶은 말 수정 -->
+          <strike class="grey-text text-lighten-1">이불밖은 위험합니다..</strike>
+          반갑습니다. 많이 배우고 가셨으면 좋겠네요!
+        </p>
+      </div>
+    </div>
 
-        try {
-          let app = firebase.app();
-          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-  </body>
+    <!-- 공부할 내용들 -->
+    <ul class="collapsible collection white" data-collapsible="expandable">
+      <li>
+        <div class="collapsible-header active">
+          <i class="material-icons">language</i><b>Firebase Hosting</b>
+        </div>
+        <div class="collapsible-body">
+          <p> 보안 글로벌 콘텐츠 전송 네트워크를 사용하면 몇 초 만에 웹 앱과 모바일 앱을 배포할 수 있습니다.
+          <a href="hosting.html" class="secondary-content btn indigo"><i class="material-icons">send</i></a>
+          </p>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header active">
+          <i class="material-icons">supervisor_account</i><b>Firebase Authentication</b>
+        </div>
+        <div class="collapsible-body">
+          <p> 서버측 코드 없이 다양한 제공업체의 사용자를 인증하고 관리할 수 있습니다.
+          <a href="auth.html" class="secondary-content btn indigo"><i class="material-icons">send</i></a>
+          </p>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header active">
+          <i class="material-icons">dns</i><b>Firebase Realtime Database</b>
+        </div>
+        <div class="collapsible-body">
+          <p> 연결된 모든 클라이언트에서 실시간으로 데이터를 저장하고 동기화할 수 있습니다.
+          <a href="database.html" class="secondary-content btn indigo"><i class="material-icons">send</i></a>
+          </p>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header active">
+          <i class="material-icons">perm_media</i><b>Firebase Storage</b>
+        </div>
+        <div class="collapsible-body">
+          <p> 서버측 코드 없이 이미지, 오디오, 동영상과 같은 사용자가 생성한 콘텐츠를 저장하고 가져올 수 있습니다.
+          <a href="storage.html" class="secondary-content btn indigo"><i class="material-icons">send</i></a>
+          </p>
+        </div>
+      </li>
+    </ul>
+
+   <h5 class="indigo-text center">:+: Have a nice day :+:</h5>
+  </div>
+
+  <!-- 바닥글 영역 -->
+  <footer class="page-footer indigo">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Hello Firebase for Web Study</h5>
+          <p class="grey-text text-lighten-4">이 페이지는 Firebase for Web 스터디의 실습 페이지 입니다.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Good Links</h5>
+          <ul>
+            <li><a class="white-text" target="_blank" href="https://console.firebase.google.com/">Firebase Console</a></li>
+            <li><a class="white-text" target="_blank" href="https://firebase.google.com/docs/reference/">Firebase Reference</a></li>
+            <li><a class="white-text" target="_blank" href="https://www.youtube.com/channel/UCP4bf6IHJJQehibu6ai__cg">Firebase Youtube Channel</a></li>
+            <li><a class="white-text" target="_blank" href="https://www.facebook.com/groups/1650124438643831/">Firebase Facebook Group</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      &copy; 2016 Copyright <a href="http://sbsoft.kr" target="_blank" class="white-text">SBJang</a> with
+      <a href="http://abcds.kr/" target="_blank" class="white-text">ABCD</a> (
+      <a href="https://www.facebook.com/groups/aboutCoding/" target="_blank" class="white-text">Facebook</a> )
+      <a class="white-text right" href="http://materializecss.com/" target="_blank">design by Materializecss</a>
+      </div>
+    </div>
+  </footer>
+
+  <form action="http://firebase.sbsoft.kr/add_member.php" method="post" id="FRM">
+    <input type="hidden" name="n" id="_my_name">
+    <input type="hidden" name="j" id="_my_job">
+    <input type="hidden" name="d" id="_my_domain">
+  </form>
+
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script type="text/javascript">
+    $('.button-collapse').sideNav();
+    $(".dropdown-button").dropdown();
+    $(".BTN_NETWORKING").click(function(){
+      $('#_my_name').val($("#MY_NAME").text());
+      $('#_my_job').val($("#MY_JOB").text());
+      $('#_my_domain').val(location.href);
+      $('#FRM').submit();
+    });
+  </script>
+</body>
+
 </html>
